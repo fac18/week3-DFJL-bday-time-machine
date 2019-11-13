@@ -1,0 +1,30 @@
+{
+  "name": "week3-DFJL-bday-time-machine",
+  "version": "1.0.0",
+  "description": "Go back in time to the day of your birth! What was the world like?",
+  "main": "index.js",
+  "directories": {
+    "test": "tests"
+  },
+  "scripts": {
+    "test": "nodemon tests/test.js | tap-spec",
+    "nyc": "nyc tape tests/test.js | tap-spec"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/fac18/week3-DFJL-bday-time-machine.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/fac18/week3-DFJL-bday-time-machine/issues"
+  },
+  "homepage": "https://github.com/fac18/week3-DFJL-bday-time-machine#readme",
+  "devDependencies": {
+    "nodemon": "^1.19.4",
+    "nyc": "^14.1.1",
+    "tap-spec": "^5.0.0",
+    "tape": "^4.11.0"
+  }
+}
