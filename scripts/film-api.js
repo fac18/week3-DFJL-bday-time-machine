@@ -1,16 +1,17 @@
-let topFilms = [];
 const filmsSection = document.querySelector(".films");
+let myFilmKey = "9ec25de3852c136e9679b83b4d5f1ad2"; // fetch key from .config file
+let topFilms = []; // declare topFilms array with global scope
 
 submitBtn.addEventListener("click", function(event) {
   event.preventDefault();
 
   const xhr = new XMLHttpRequest();
-  let myFilmKey = "9ec25de3852c136e9679b83b4d5f1ad2";
   let year = document.querySelector(".input-date").value;
 
-  xhr.onreadystatechange = function() {
-    if (xhr.readyState == 4 && xhr.status == 200) {
+  xhr.onload = function() {
+    if (xhr.status === 200) {
       const filmObjs = JSON.parse(xhr.responseText).results;
+      topFilms = []; // reset topFilms array
       filmObjs.forEach((x, i) => {
         if (i < 3) {
           let film = {
@@ -23,7 +24,8 @@ submitBtn.addEventListener("click", function(event) {
           topFilms.push(film);
         }
       });
-      injectFilms(topFilms);
+      filmsSection.innerHTML = ""; // clear films section
+      injectFilms(topFilms); // populate films section
     }
   };
   xhr.open(
@@ -34,7 +36,7 @@ submitBtn.addEventListener("click", function(event) {
   xhr.send();
 });
 
-const injectFilms = function(filmArray) {
+const injectFilms = filmArray => {
   filmArray.forEach((x, i) => {
     //create div for each object
     let filmOutput = document.createElement("div");

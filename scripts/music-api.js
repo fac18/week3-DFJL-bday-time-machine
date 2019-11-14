@@ -1,6 +1,5 @@
 // declare btn variable only once in this script, which must run first!
 const submitBtn = document.querySelector(".submit-date");
-console.log("This is the submit button:", submitBtn);
 
 submitBtn.addEventListener("click", function(event) {
   event.preventDefault();
@@ -24,7 +23,6 @@ submitBtn.addEventListener("click", function(event) {
           topTracks.push(track);
         }
       });
-      console.log("this is topTracks: ", topTracks);
     } else {
       console.log("error");
     }
