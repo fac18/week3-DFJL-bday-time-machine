@@ -1,6 +1,7 @@
 // export let topFilms = [];
 
 let topFilms = [];
+const filmsSection = document.querySelector(".films");
 
 const xhr = new XMLHttpRequest();
 const birthday = document.querySelector(".input-date");
@@ -22,7 +23,7 @@ xhr.onreadystatechange = function() {
         topFilms.push(film);
       }
     });
-    createFilmsNode(topFilms);
+    injectFilms(topFilms);
   }
 };
 xhr.open(
@@ -32,31 +33,29 @@ xhr.open(
 );
 xhr.send();
 
-const filmsSection = document.querySelector(".films");
-
-const createFilmsNode = function(filmArray) {
-  for (let i = 0; i < 3; i++) {
+const injectFilms = function(filmArray) {
+  filmArray.forEach((x, i) => {
     //create div for each object
     let filmOutput = document.createElement("div");
-    // .classList.add(`films__${i}`);
+    filmOutput.classList.add(`films__${i}`);
 
     // create image title, date and overview elements, for each div
     let filmImage = document.createElement("img");
-    // .classList.add("films__image");
-    filmImage.src = "https://image.tmdb.org/t/p/w500/" + filmArray[i].image;
-    console.log(filmImage);
-    const filmTitle = document.createElement("h3");
-    // .classList.add("films__title");
+    filmImage.classList.add("films__image");
+    filmImage.src = "https://image.tmdb.org/t/p/w400/" + x.image;
+    filmImage.alt = `Poster for the film ${x.title}`;
 
-    filmTitle.textContent = filmArray[i].title;
+    const filmTitle = document.createElement("h3");
+    filmTitle.classList.add("films__title");
+    filmTitle.textContent = x.title;
 
     const filmDate = document.createElement("p");
-    // .classList.add("films__date");
-    filmDate.textContent = filmArray[i].release_date;
+    filmDate.classList.add("films__date");
+    filmDate.textContent = x.release_date;
 
     const filmOverview = document.createElement("p");
-    // .classList.add("films__overview");
-    filmOverview.textContent = filmArray[i].overview;
+    filmOverview.classList.add("films__overview");
+    filmOverview.textContent = x.overview;
 
     // Append child elements to filmoutput
     filmOutput.appendChild(filmImage);
@@ -64,8 +63,7 @@ const createFilmsNode = function(filmArray) {
     filmOutput.appendChild(filmDate);
     filmOutput.appendChild(filmOverview);
 
+    // Finally append whole div to film section
     filmsSection.appendChild(filmOutput);
-  }
+  });
 };
-
-// createFilmsFunction(topFilms);
