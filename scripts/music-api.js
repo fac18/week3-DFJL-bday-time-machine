@@ -10,7 +10,7 @@ submitBtn.addEventListener("click", function(event) {
   let url = `https://cors-anywhere.herokuapp.com/https://api.musixmatch.com/ws/1.1/track.search?f_track_release_group_first_release_date_min=${year}0101&f_track_release_group_first_release_date_max=${year}1231&s_track_rating=desc&apikey=${myMusicKey}`;
 
   xhr.onload = function() {
-    if (xhr.status == 200) {
+    if (xhr.status === 200) {
       let songs = JSON.parse(xhr.responseText).message.body.track_list;
       let topTracks = [];
       songs.forEach((x, i) => {
@@ -25,7 +25,7 @@ submitBtn.addEventListener("click", function(event) {
         }
       });
     } else {
-      console.log("error");
+      console.log("Error. Status code is: "), xhr.status;
     }
   };
   xhr.open("GET", url, true);
