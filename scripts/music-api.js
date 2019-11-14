@@ -30,7 +30,7 @@ submitBtn.addEventListener("click", function(event) {
       musicSection.innerHTML = ""; // clear music section
       injectTracks(topTracks); // populate tracks section
     } else {
-      console.log("Error. Status code is: "), xhr.status;
+      console.log("Error in fetching music. Status code is: ", xhr.status);
     }
   };
   xhr.open("GET", url, true);
@@ -38,14 +38,14 @@ submitBtn.addEventListener("click", function(event) {
 });
 
 const injectTracks = musicArray => {
+  let musicHeading = document.createElement("h2");
+  musicHeading.classList.add("music__heading");
+  musicHeading.textContent = "Top Tracks";
+  musicSection.appendChild(musicHeading);
+
   musicArray.forEach((x, i) => {
-    //create div for each object
     let musicOutput = document.createElement("div");
     musicOutput.classList.add(`music__${i}`);
-
-    let musicHeading = document.createElement("h2");
-    musicHeading.classList.add("music__heading");
-    musicHeading.textContent = "Top Tracks";
 
     const musicTitle = document.createElement("h3");
     musicTitle.classList.add("music__title");
@@ -59,7 +59,6 @@ const injectTracks = musicArray => {
     musicArtist.classList.add("music__artist");
     musicArtist.textContent = x.artist;
 
-    musicOutput.appendChild(musicHeading);
     musicOutput.appendChild(musicTitle);
     musicOutput.appendChild(musicArtist);
     musicOutput.appendChild(musicAlbum);

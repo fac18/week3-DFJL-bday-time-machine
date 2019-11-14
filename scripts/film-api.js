@@ -28,7 +28,7 @@ submitBtn.addEventListener("click", function(event) {
       filmsSection.innerHTML = ""; // clear films section
       injectFilms(topFilms); // populate films section
     } else {
-      console.log("Error. Status code is: "), xhr.status;
+      console.log("Error in fetching films. Status code is: ", xhr.status);
     }
   };
   xhr.open("GET", url, true);
@@ -36,15 +36,16 @@ submitBtn.addEventListener("click", function(event) {
 });
 
 const injectFilms = filmArray => {
+  // create section heading outside the film divs
+  let filmHeading = document.createElement("h2");
+  filmHeading.classList.add("films__heading");
+  filmHeading.textContent = "Top Films";
+  filmsSection.appendChild(filmHeading);
+
   filmArray.forEach((x, i) => {
     //create div for each object
     let filmOutput = document.createElement("div");
     filmOutput.classList.add(`films__${i}`);
-
-    // create section heading
-    let filmHeading = document.createElement("h2");
-    filmHeading.classList.add("films__heading");
-    filmHeading.textContent = "Top Films";
 
     // create image title, date and overview elements, for each div
     let filmImage = document.createElement("img");
@@ -65,7 +66,6 @@ const injectFilms = filmArray => {
     filmOverview.textContent = x.overview;
 
     // Append child elements to filmoutput
-    filmOutput.appendChild(filmHeading);
     filmOutput.appendChild(filmImage);
     filmOutput.appendChild(filmTitle);
     filmOutput.appendChild(filmDate);

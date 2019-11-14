@@ -1,5 +1,32 @@
 # week3-DFJL-bday-time-machine
 
+## Installation guidelines
+
+__Step 1:__ 
+Create new API keys at:
+
+Musixmatch - https://developer.musixmatch.com/documentation
+
+The Movie DB - https://www.themoviedb.org/documentation/api
+
+__Step 2:__
+Refer to config.template file which has the following contents: 
+
+```// add your api keys and rename this file 'config.js' to make me work!
+let config = {
+  MY_MUSIC_KEY: "your-musixmatch-key",
+  MY_FILM_KEY: "your-moviedb-key"
+};
+```
+__Step 3:__
+Add your API keys for Musixmatch and The Movie DB fields.
+
+__Step 4:__ 
+Save file and rename as 'config.js' and the site should now be able to access APIs with your keys when you hit submit!
+
+
+## Project Planning
+
 We started off looking at the list of recommended APIs and discussed ideas on which ones would be suitable to reflect the personalities of our team.  
 
 We quickly agreed on an 80s BACK TO THE FUTURE THEME which would incorporate the Movie DB API and MUSIC API to let you 
