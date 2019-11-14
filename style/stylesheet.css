@@ -34,6 +34,7 @@ h3 {
 }
 p {
   font-family: "Lato", sans-serif;
+  text-align: justify;
 }
 
 img {
@@ -108,6 +109,11 @@ form {
   flex-direction: column;
 }
 
+.music .music__heading {
+  justify-self: center;
+  align-self: center;
+}
+
 .music__heading {
   color: white;
 }
@@ -122,4 +128,30 @@ form {
 
 .music__artist {
   color: white;
+}
+
+.films__0 {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.films__1 {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.films__2 {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+footer {
+  color: white;
+  font-size: var(--space-s);
 }
