@@ -7,12 +7,13 @@ submitBtn.addEventListener("click", function(event) {
 
   const xhr = new XMLHttpRequest();
   let year = document.querySelector(".input-date").value;
+  let url = `https://api.themoviedb.org/3/discover/movie?primary_release_year=${year}&api_key=${myFilmKey}`;
 
   xhr.onload = function() {
     if (xhr.status === 200) {
-      const filmObjs = JSON.parse(xhr.responseText).results;
+      const films = JSON.parse(xhr.responseText).results;
       topFilms = []; // reset topFilms array
-      filmObjs.forEach((x, i) => {
+      films.forEach((x, i) => {
         if (i < 3) {
           let film = {
             id: x.id,
@@ -30,11 +31,7 @@ submitBtn.addEventListener("click", function(event) {
       console.log("Error. Status code is: "), xhr.status;
     }
   };
-  xhr.open(
-    "GET",
-    `https://api.themoviedb.org/3/discover/movie?primary_release_year=${year}&api_key=${myFilmKey}`,
-    true
-  );
+  xhr.open("GET", url, true);
   xhr.send();
 });
 

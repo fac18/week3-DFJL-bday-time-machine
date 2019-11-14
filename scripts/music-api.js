@@ -1,4 +1,7 @@
 const myMusicKey = config.MY_MUSIC_KEY;
+const musicSection = document.querySelector(".music");
+let topTracks = []; // declare topTracks array with global scope
+
 // declare btn variable only once in this script, which must run first!
 const submitBtn = document.querySelector(".submit-date");
 
@@ -24,6 +27,8 @@ submitBtn.addEventListener("click", function(event) {
           topTracks.push(track);
         }
       });
+      musicSection.innerHTML = ""; // clear music section
+      injectTracks(topTracks); // populate tracks section
     } else {
       console.log("Error. Status code is: "), xhr.status;
     }
@@ -31,3 +36,36 @@ submitBtn.addEventListener("click", function(event) {
   xhr.open("GET", url, true);
   xhr.send();
 });
+
+const injectTracks = musicArray => {
+  musicArray.forEach((x, i) => {
+    //create div for each object
+    let musicOutput = document.createElement("div");
+    musicOutput.classList.add(`music__${i}`);
+
+    // create image title, date and overview elements, for each div
+    // let musicImage = document.createElement("img");
+    // musicImage.classList.add("music__image");
+
+    const musicTitle = document.createElement("h3");
+    musicTitle.classList.add("music__title");
+    musicTitle.textContent = x.title;
+
+    const musicAlbum = document.createElement("p");
+    musicAlbum.classList.add("music__album");
+    musicAlbum.textContent = x.album;
+
+    const musicArtist = document.createElement("p");
+    musicArtist.classList.add("music__artist");
+    musicArtist.textContent = x.artist;
+
+    // Append child elements to musicOutput
+    // musicOutput.appendChild(musicImage);
+    musicOutput.appendChild(musicTitle);
+    musicOutput.appendChild(musicArtist);
+    musicOutput.appendChild(musicAlbum);
+
+    // Finally append whole div to music section
+    musicSection.appendChild(musicOutput);
+  });
+};
