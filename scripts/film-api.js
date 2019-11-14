@@ -26,6 +26,8 @@ submitBtn.addEventListener("click", function(event) {
       });
       filmsSection.innerHTML = ""; // clear films section
       injectFilms(topFilms); // populate films section
+    } else {
+      console.log("Error. Status code is: "), xhr.status;
     }
   };
   xhr.open(
