@@ -1,40 +1,47 @@
 <!DOCTYPE html>
 <html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>Back to the Birth</title>
+    <link rel="stylesheet" href="./style/stylesheet.css" />
+    <link rel="icon" href="./img/logo.png" />
+    <script type="text/javascript" src="scripts/film-api.js"></script>
+    <script type="text/javascript" src="scripts/music-api.js"></script>
+  </head>
 
-<head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <meta http-equiv="X-UA-Compatible" content="ie=edge" />
-  <title>Back to the Birth</title>
-  <link rel="stylesheet" href="./style/stylesheet.css" />
-  <link rel="icon" href="./img/logo.png" />
-</head>
-
-<body>
-  <main>
-    <section>
-      <img src="https://fontmeme.com/permalink/191113/346d1719c257c332aeddc504bc867a63.png"
-        alt="back-to-the-birthday-logo" border="0" />
-      <form>
-        <input type="date" class="input-date" placeholder="Enter your date of Birth" />
-        <input type="submit" class="submit-date" value="Submit" />
-      </form>
-    </section>
-    <section class="music-section">
-      <div class="music-output"></div>
-    </section>
-    <section class="film-section">
-      <div class="film-output">
-        <img class="film-image">
-        <p class="film-title"></p>
-        <p class="film-date"></p>
-        <p class="film-overview"></p>
-      </div>
-    </section>
-    <footer>
-      Reference to our APIs
-    </footer>
-  </main>
-</body>
-
+  <body>
+    <main>
+      <section>
+        <img
+          src="https://fontmeme.com/permalink/191113/346d1719c257c332aeddc504bc867a63.png"
+          alt="back-to-the-birthday-logo"
+          border="0"
+        />
+        <form>
+          <input
+            type="date"
+            class="input-date"
+            placeholder="Enter your date of Birth"
+          />
+          <input type="submit" class="submit-date" value="Submit" />
+        </form>
+      </section>
+      <section class="music-section">
+        <div class="music-output"></div>
+      </section>
+      <section class="film-section">
+        <div class="film-output">
+          <img id="film-image" src="" />
+          <p id="film-title"></p>
+          <p id="film-date"></p>
+          <p id="film-overview"></p>
+        </div>
+      </section>
+      <footer>
+        Reference to our APIs
+      </footer>
+    </main>
+  </body>
 </html>
