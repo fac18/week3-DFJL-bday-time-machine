@@ -1,5 +1,5 @@
 const filmsSection = document.querySelector(".films");
-let myFilmKey = "9ec25de3852c136e9679b83b4d5f1ad2"; // fetch key from .config file
+let myFilmKey = config.MY_FILM_KEY; // fetch key from config file
 let topFilms = []; // declare topFilms array with global scope
 
 submitBtn.addEventListener("click", function(event) {
