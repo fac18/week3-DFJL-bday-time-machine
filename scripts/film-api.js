@@ -41,6 +41,11 @@ const injectFilms = filmArray => {
     let filmOutput = document.createElement("div");
     filmOutput.classList.add(`films__${i}`);
 
+    // create section heading
+    let filmHeading = document.createElement("h2");
+    filmHeading.classList.add("films__heading");
+    filmHeading.textContent = "Top Films";
+
     // create image title, date and overview elements, for each div
     let filmImage = document.createElement("img");
     filmImage.classList.add("films__image");
@@ -60,6 +65,7 @@ const injectFilms = filmArray => {
     filmOverview.textContent = x.overview;
 
     // Append child elements to filmoutput
+    filmOutput.appendChild(filmHeading);
     filmOutput.appendChild(filmImage);
     filmOutput.appendChild(filmTitle);
     filmOutput.appendChild(filmDate);
