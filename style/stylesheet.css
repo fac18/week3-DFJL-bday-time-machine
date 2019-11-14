@@ -86,8 +86,40 @@ form {
   align-items: center;
 }
 
+.films__heading {
+  color: white;
+}
+
+.films__title {
+  color: white;
+}
+
+.films__date {
+  color: white;
+}
+
+.films__overview {
+  color: white;
+}
+
 .music {
   min-height: 100vh;
   display: flex;
   flex-direction: column;
+}
+
+.music__heading {
+  color: white;
+}
+
+.music__title {
+  color: white;
+}
+
+.music__album {
+  color: white;
+}
+
+.music__artist {
+  color: white;
 }
