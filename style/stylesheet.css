@@ -1,4 +1,25 @@
-/* body {
-  background-image: url("../img/background.jpg");
+:root {
+  /* colour variables */
+  --dark-blue: #272f60;
+  --orange: #ffc518;
+  --light-blue: #a1b9e3;
+  /* spacing variables */
+  --space-xs: 0.382rem;
+  --space-s: 0.618rem;
+  --space-m: 1rem;
+  --space-l: 1.618rem;
+  --space-xl: 2.618rem;
+  --space-xxl: 4.236rem;
+}
+
+body {
+  background-color: var(--dark-blue);
+}
+.landing {
+  height: 100vh;
+  background-image: url("../img/background2.jpg");
   background-size: cover;
-} */
+}
+
+input {
+}
