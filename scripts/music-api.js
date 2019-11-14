@@ -43,9 +43,9 @@ const injectTracks = musicArray => {
     let musicOutput = document.createElement("div");
     musicOutput.classList.add(`music__${i}`);
 
-    // create image title, date and overview elements, for each div
-    // let musicImage = document.createElement("img");
-    // musicImage.classList.add("music__image");
+    let musicHeading = document.createElement("h2");
+    musicHeading.classList.add("music__heading");
+    musicHeading.textContent = "Top Tracks";
 
     const musicTitle = document.createElement("h3");
     musicTitle.classList.add("music__title");
@@ -59,13 +59,11 @@ const injectTracks = musicArray => {
     musicArtist.classList.add("music__artist");
     musicArtist.textContent = x.artist;
 
-    // Append child elements to musicOutput
-    // musicOutput.appendChild(musicImage);
+    musicOutput.appendChild(musicHeading);
     musicOutput.appendChild(musicTitle);
     musicOutput.appendChild(musicArtist);
     musicOutput.appendChild(musicAlbum);
 
-    // Finally append whole div to music section
     musicSection.appendChild(musicOutput);
   });
 };
