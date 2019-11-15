@@ -187,3 +187,6 @@ musicOutput.appendChild(makeMusicNode("p", x, "artist"));
 
 ---
 
+## Stop Go Continue
+
+![stop go continue](https://github.com/fac18/week3-DFJL-bday-time-machine/blob/master/Image%20from%20iOS.jpg)
