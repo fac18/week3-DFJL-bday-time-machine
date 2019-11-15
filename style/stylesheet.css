@@ -87,46 +87,9 @@ form {
   align-items: center;
 }
 
-.films__heading {
-  color: white;
-}
-
-.films__title {
-  color: white;
-}
-
-.films__date {
-  color: white;
-}
-
-.films__overview {
-  color: white;
-}
-
-.music {
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-}
-
-.music .music__heading {
-  justify-self: center;
-  align-self: center;
-}
-
-.music__heading {
-  color: white;
-}
-
-.music__title {
-  color: white;
-}
-
-.music__album {
-  color: white;
-}
-
-.music__artist {
+h2,
+h3,
+p {
   color: white;
 }
 
@@ -149,6 +112,17 @@ form {
   flex-direction: column;
   justify-content: center;
   align-items: center;
+}
+
+.music {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+.music .music__heading {
+  justify-self: center;
+  align-self: center;
 }
 
 footer {
