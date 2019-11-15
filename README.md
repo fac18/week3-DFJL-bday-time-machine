@@ -1,32 +1,40 @@
-BDAY TIME MACHINE!
+# BDAY TIME MACHINE
+
+---
 
 ## Installation guidelines
 
 __Step 1:__ 
-Clone the repository:
-```https://github.com/fac18/week3-DFJL-bday-time-machine.git```
+Clone the repo: `https://github.com/fac18/week3-DFJL-bday-time-machine.git`
 
 __Step 2:__
-Create new API keys at:
+Create new API keys for each service:
 
-Musixmatch - https://developer.musixmatch.com/documentation
-The Movie DB - https://www.themoviedb.org/documentation/api
+* [Musixmatch](https://developer.musixmatch.com/documentation)
+* [The Movie DB](https://www.themoviedb.org/documentation/api)
+
+---
 
 __Step 3:__
 Refer to config.template file which has the following contents: 
 
-```// add your api keys and rename this file 'config.js' to make me work!
+```javascript=
 let config = {
   MY_MUSIC_KEY: "your-musixmatch-key",
   MY_FILM_KEY: "your-moviedb-key"
 };
 ```
 __Step 4:__
-Add your API keys for Musixmatch and The Movie DB fields.
+Add your API keys for Musixmatch and The Movie DB to the appropriate fields.
+
+---
 
 __Step 5:__ 
-Save file and rename as 'config.js' and the site should now be able to access APIs with your keys when you hit submit!
+Rename and save the file as 'config.js' - the site should now be able to access the APIs with your keys when you hit submit!
 
+![yes](https://media.giphy.com/media/3rUbeDiLFMtAOIBErf/giphy.gif)
+
+---
 
 ## Process
 
@@ -69,42 +77,113 @@ Specifically, our _preflight request_ didn't pass their control check:
 
 ### Solutions
 
-1. The [Chrome extension](https://chrome.google.com/webstore/detail/moesif-orign-cors-changer/digfbfaphojjndkpccljibejjbppifbc) solution
+1. The [Chrome extension](https://chrome.google.com/webstore/detail/moesif-orign-cors-changer/digfbfaphojjndkpccljibejjbppifbc) solution (actually, [this one](https://chrome.google.com/webstore/detail/allow-cors-access-control/lhobafahddgcelffkeicbaginigeejlf) worked better)
 
-2. The [CORS Anywhere proxy](https://cors-anywhere.herokuapp.com/) solution
+2. The [CORS Anywhere](https://cors-anywhere.herokuapp.com/) proxy API (mediating server) solution
 
-3. Contact Musixmatch and ask them to whitelist our origin...
+3. Contact Musixmatch and ask them to whitelist our origin (http://127.0.0.1:3000/)
 
-3. Some unknown solution that genuinely solves the problem!
+4. Some unknown solution that genuinely solves the problem!
 
 
 ---
 
-## Asynchronicity
+## Asynchronicity (and some file structuring)
 
 ---
 
 We had two API files and we decided that first we would be able to do all of the dom manipulation in one. So we starter creating our elements from our array of objects in dom.js
 
-We not-so-soon realised that we couldn't do this because:
-1. one pair worked on bringing in the information from the submit button while the other wanted to take the take the information from the xhr (from the api files) and push that back into the html
-2. So we went back to working in the api files again
+---
 
-Issues:
-1. You cannot add a class to an element that doesn't exist
-2. the xhr request actually takes time! 
-3. Google dev tools update live and this can make you wonder what you were doing wrong
+We wanted to make our xhr function as clean as possible and so were creating our nodes and elements outside of the function but still in the api.js file
+
+![](https://i.imgur.com/mw5pUho.png)
 
 ---
 
-![Help me](https://media.giphy.com/media/FqAwoNjVneJxK/giphy.gif)
+We really struggled working out what was going wrong because we were able to run the function to create our elements, the api output was being console.log()d but we could not _create_ elements for the output.
+
+---
+Console displays an empty looking array:
+![](https://i.imgur.com/4WogJRx.png)
+The console later updates the array, once the xhr request had been completed.
+![](https://i.imgur.com/WrjOb1i.png)
+
+Solved it by calling the function inside of the xhr.onload function
 
 ---
 
-We couldn't
+## Hiding your API keys
 
-## Hide your API keys! 
+### SECURE YOUR STUFF!
 
-SECURE YOUR STUFF
+Once it becomes public, anyone can use it, and possibly abuse it!
 
-Your API key is your identifier
+
+We didnt realise this until we had already pushed our work onto Github...
+
+---
+
+### Don't worry though!
+Apparently we can still remove our API keys from previously pushed commits by a way of purging from our repository's history!
+
+*Stretch goal* - consult github help! https://help.github.com/articles/remove-sensitive-data/
+
+---
+
+## Responding to issues
+
+---
+
+### Refactoring/abstraction
+
+In our `music-api.js` file we were producing our nodes in a very verbose fashion (thanks to @tonylomax for raising this).
+
+```javascript=
+const musicTitle = document.createElement("h3");
+musicTitle.classList.add("music__title");
+musicTitle.textContent = x.title;
+
+const musicAlbum = document.createElement("p");
+musicAlbum.classList.add("music__album");
+musicAlbum.textContent = x.album;
+
+const musicArtist = document.createElement("p");
+musicArtist.classList.add("music__artist");
+musicArtist.textContent = x.artist;
+```
+
+---
+
+We would then assign them one by one.
+
+```javascript=
+musicOutput.appendChild(musicTitle);
+musicOutput.appendChild(musicArtist);
+musicOutput.appendChild(musicAlbum);
+```
+
+---
+
+By writing a function to handle node production...
+
+```javascript=
+const makeMusicNode = function(el, object, key) {
+  let node = document.createElement(el);
+  node.classList.add(`music__${key}`);
+  node.textContent = object[key];
+  return node;
+};
+```
+
+we could make and assign nodes in one line each!
+
+```javascript=
+musicOutput.appendChild(makeMusicNode("h3", x, "title"));
+musicOutput.appendChild(makeMusicNode("p", x, "album"));
+musicOutput.appendChild(makeMusicNode("p", x, "artist"));
+```
+
+---
+
