@@ -161,5 +161,6 @@ h2, h3, p {
 
 footer {
   color: white;
-  font-size: var(--space-s);
+  font-size: var(--space-m);
+  font-family: "Lato", sans-serif;
 }
