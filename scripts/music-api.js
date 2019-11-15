@@ -47,22 +47,17 @@ const injectTracks = musicArray => {
     let musicOutput = document.createElement("div");
     musicOutput.classList.add(`music__${i}`);
 
-    const musicTitle = document.createElement("h3");
-    musicTitle.classList.add("music__title");
-    musicTitle.textContent = x.title;
-
-    const musicAlbum = document.createElement("p");
-    musicAlbum.classList.add("music__album");
-    musicAlbum.textContent = x.album;
-
-    const musicArtist = document.createElement("p");
-    musicArtist.classList.add("music__artist");
-    musicArtist.textContent = x.artist;
-
-    musicOutput.appendChild(musicTitle);
-    musicOutput.appendChild(musicArtist);
-    musicOutput.appendChild(musicAlbum);
+    musicOutput.appendChild(makeMusicNode("h3", x, "title"));
+    musicOutput.appendChild(makeMusicNode("p", x, "album"));
+    musicOutput.appendChild(makeMusicNode("p", x, "artist"));
 
     musicSection.appendChild(musicOutput);
   });
+};
+
+const makeMusicNode = function(el, object, key) {
+  let node = document.createElement(el);
+  node.classList.add(`music__${key}`);
+  node.textContent = object[key];
+  return node;
 };
