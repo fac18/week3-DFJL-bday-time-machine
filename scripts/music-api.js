@@ -27,7 +27,7 @@ submitBtn.addEventListener("click", function(event) {
           topTracks.push(track);
         }
       });
-      musicSection.innerHTML = ""; // clear music section
+      musicSection.textContent = ""; // clear music section
       injectTracks(topTracks); // populate tracks section
     } else {
       console.log("Error in fetching music. Status code is: ", xhr.status);

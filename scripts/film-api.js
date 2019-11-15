@@ -25,7 +25,7 @@ submitBtn.addEventListener("click", function(event) {
           topFilms.push(film);
         }
       });
-      filmsSection.innerHTML = ""; // clear films section
+      filmsSection.textContent = ""; // clear films section
       injectFilms(topFilms); // populate films section
     } else {
       console.log("Error in fetching films. Status code is: ", xhr.status);
