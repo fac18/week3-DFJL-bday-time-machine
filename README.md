@@ -3,13 +3,16 @@ BDAY TIME MACHINE!
 ## Installation guidelines
 
 __Step 1:__ 
+Clone the repository:
+```https://github.com/fac18/week3-DFJL-bday-time-machine.git```
+
+__Step 2:__
 Create new API keys at:
 
 Musixmatch - https://developer.musixmatch.com/documentation
-
 The Movie DB - https://www.themoviedb.org/documentation/api
 
-__Step 2:__
+__Step 3:__
 Refer to config.template file which has the following contents: 
 
 ```// add your api keys and rename this file 'config.js' to make me work!
@@ -18,10 +21,10 @@ let config = {
   MY_FILM_KEY: "your-moviedb-key"
 };
 ```
-__Step 3:__
+__Step 4:__
 Add your API keys for Musixmatch and The Movie DB fields.
 
-__Step 4:__ 
+__Step 5:__ 
 Save file and rename as 'config.js' and the site should now be able to access APIs with your keys when you hit submit!
 
 
