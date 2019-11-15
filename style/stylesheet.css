@@ -27,11 +27,13 @@ body {
   display: flex;
   flex-direction: column;
   font-size: 1rem;
+  margin: 0;
 }
 
 h3 {
   font-family: "Bebas Neue", cursive;
 }
+
 p {
   font-family: "Lato", sans-serif;
   text-align: justify;
@@ -40,6 +42,7 @@ p {
 img {
   max-width: 80vw;
 }
+
 .landing {
   height: 100vh;
   background-image: url("../img/background2.jpg");
@@ -47,6 +50,9 @@ img {
   display: flex;
   flex-direction: column;
   align-items: center;
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
 }
 
 form {
@@ -85,11 +91,50 @@ form {
   flex-direction: column;
   justify-content: center;
   align-items: center;
+  margin: var(--space-m);
 }
 
-h2,
-h3,
-p {
+.films__heading {
+  color: white;
+}
+
+.films__title {
+  color: white;
+}
+
+.films__date {
+  color: white;
+}
+
+.films__overview {
+  color: white;
+}
+
+.music {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  margin: var(--space-m);
+}
+
+.music .music__heading {
+  justify-self: center;
+  align-self: center;
+}
+
+.music__heading {
+  color: white;
+}
+
+.music__title {
+  color: white;
+}
+
+.music__album {
+  color: white;
+}
+
+h2, h3, p {
   color: white;
 }
 
@@ -112,17 +157,6 @@ p {
   flex-direction: column;
   justify-content: center;
   align-items: center;
-}
-
-.music {
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-}
-
-.music .music__heading {
-  justify-self: center;
-  align-self: center;
 }
 
 footer {

@@ -2,14 +2,14 @@ const filmsSection = document.querySelector(".films");
 let myFilmKey = config.MY_FILM_KEY; // fetch key from config file
 let topFilms = []; // declare topFilms array with global scope
 
-submitBtn.addEventListener("click", function(event) {
+submitBtn.addEventListener("click", function (event) {
   event.preventDefault();
 
   const xhr = new XMLHttpRequest();
   let year = document.querySelector(".input-date").value;
   let url = `https://api.themoviedb.org/3/discover/movie?primary_release_year=${year}&api_key=${myFilmKey}`;
 
-  xhr.onload = function() {
+  xhr.onload = function () {
     if (xhr.status === 200) {
       const films = JSON.parse(xhr.responseText).results;
       topFilms = []; // reset topFilms array
@@ -27,6 +27,7 @@ submitBtn.addEventListener("click", function(event) {
       });
       filmsSection.innerHTML = ""; // clear films section
       injectFilms(topFilms); // populate films section
+      scrolling();
     } else {
       console.log("Error in fetching films. Status code is: ", xhr.status);
     }
@@ -34,6 +35,10 @@ submitBtn.addEventListener("click", function(event) {
   xhr.open("GET", url, true);
   xhr.send();
 });
+
+function scrolling() {
+  window.scrollBy(0, window.innerHeight);
+}
 
 const injectFilms = filmArray => {
   // create section heading outside the film divs
