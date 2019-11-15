@@ -27,6 +27,7 @@ submitBtn.addEventListener("click", function(event) {
       });
       filmsSection.innerHTML = ""; // clear films section
       injectFilms(topFilms); // populate films section
+      scrolling(); // scroll down page after loading films
     } else {
       console.log("Error in fetching films. Status code is: ", xhr.status);
     }
@@ -34,6 +35,10 @@ submitBtn.addEventListener("click", function(event) {
   xhr.open("GET", url, true);
   xhr.send();
 });
+
+const scrolling = function() {
+  window.scrollBy(0, window.innerHeight);
+};
 
 const injectFilms = filmArray => {
   // create section heading outside the film divs
